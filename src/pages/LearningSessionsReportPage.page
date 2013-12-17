@@ -1,0 +1,51 @@
+<apex:page standardController="Learner__c" extensions="LearningSessionsReport" tabStyle="Learning_Sessions_Report__tab">
+    <apex:pageMessages />
+    <apex:form id="sessions"> 
+    <apex:pageBlock >
+    <apex:commandButton value="Show All" action="{!displayAllSessions}" rerender="learner"/>
+    <apex:commandButton value="Show Last Month" action="{!displayLastMonthSessions}" rerender="learner"/>
+    <apex:commandButton value="Show This Month" action="{!displayThisMonthSessions}" rerender="learner"/>
+	    <apex:outputPanel id="learner" style="overflow:auto" layout="block">
+	    	<table >
+            	<tr>
+                	<th style="width:70px" class="headerRow">Date</th>
+                    <th style="width:70px" class="headerRow">Learning Session ID</th>
+                    <th style="width:80px" class="headerRow">Learner ID</th>
+                    <th style="width:200px" class="headerRow">Learner Name</th>
+                    <th style="width:150px" class="headerRow">Session Type</th>
+                    <th style="width:70px" class="headerRow">Fee</th>
+                </tr>
+   				<apex:repeat value="{!Sessions}" var="oneSession">
+   					<tr style="height:20px">
+   						<td>
+   							<apex:outputField value="{!oneSession.Date__c}"/>
+   						</td>
+                       	<td>
+  							<apex:outputField value="{!oneSession.Name}"/><br/>
+   						</td>
+   						<apex:outputPanel id="ownerRow" layout="none" rendered="{!oneSession.Learner__r.OwnerId == CurrentUserID}">
+	                        <td>
+								<apex:outputField value="{!oneSession.Learner__c}" />
+   							</td>
+   						</apex:outputPanel>
+   						<apex:outputPanel id="notOwnerRow" layout="none" rendered="{!oneSession.Learner__r.OwnerId != CurrentUserID}">
+ 	                        <td>
+								<apex:outputText value="{!oneSession.Learner__r.Name}" />
+   							</td>
+   						</apex:outputPanel>
+   						<td>
+   							<apex:outputText value="{!oneSession.Learner_name__c}" />
+   						</td>
+   						<td>
+   							<apex:outputField value="{!oneSession.RecordTypeID}" />
+   						</td>
+   						<td>
+   							€<apex:outputText value="{!oneSession.Cost_of_session__c}" />
+   						</td>
+   					</tr>
+  			</apex:repeat>
+  			</table>
+       </apex:outputPanel>
+   </apex:pageBlock>
+   </apex:form>
+</apex:page>
