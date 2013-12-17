@@ -1,0 +1,39 @@
+<apex:page id="timesheet" showHeader="true" sidebar="true" standardcontroller="Timesheet__c" extensions="TimesheetController" title="Timesheet">
+    <apex:define name="body">
+        <apex:form id="theForm">
+          <apex:outputPanel style="padding:50px 50px 50px 50px" id="userDetail">
+           <apex:pageBlock title="Timesheet Detail" id="editUserDetail" rendered="{!isEdit}">
+             <apex:pageMessages />
+             <apex:pageBlockButtons id="editButtons" location="top">
+               <apex:commandButton id="save" value="{!$Label.site.save}" action="{!save}" rerender="userDetail"/>
+               <apex:commandButton id="cancel" value="{!$Label.site.cancel}" action="{!cancel}" rerender="userDetail" immediate="true"/>
+             </apex:pageBlockButtons>
+             <apex:pageBlockSection id="editUserSection" columns="1" title="{!$Label.site.user_information}">
+                 <apex:inputField id="editemployee" value="{!Timesheet__c.Employee__c}"/>
+                 <apex:inputField id="editweek" value="{!Timesheet__c.Week_beginning__c}"/>
+                 <apex:inputField id="edithr" value="{!Timesheet__c.Reviewed_by_HR__c}"/>
+  	         </apex:pageBlockSection>
+             <apex:pageBlockSection id="editContactSection" columns="2" title="Times">
+                 <apex:inputField id="editfirstName" value="{!Timesheet__c.Comments__c}"/> 
+               </apex:pageBlockSection>
+           </apex:pageBlock>         
+        
+            <apex:pageBlock title="Timesheet" id="viewUserDetail" rendered="{!!isEdit}">
+                 <apex:pageBlockButtons id="detailButtons" location="top">
+                   <apex:commandButton id="edit" value="Edit" action="{!edit}" rerender="userDetail"/>
+                   <apex:commandButton id="clone" value="Clone" action="{!clone}"/>
+                 </apex:pageBlockButtons>
+                 <apex:pageBlockSection id="viewUserSection" columns="2" title="{!$Label.site.user_information}">
+	                 <apex:outputField id="detailemployee" value="{!Timesheet__c.Employee__c}"/>
+                     <apex:outputField id="detailweek" value="{!Timesheet__c.Week_beginning__c}"/>
+ 	                 <apex:outputField id="detailhr" value="{!Timesheet__c.Reviewed_by_HR__c}"/>
+                   </apex:pageBlockSection>
+                 <apex:pageBlockSection id="viewContactSection" columns="2" title="{!$Label.site.contact_information}">
+                     <apex:outputField id="detailemail" value="{!Timesheet__c.Comments__c}"/> 
+                  </apex:pageBlockSection>
+               </apex:pageBlock>
+            </apex:outputPanel>
+         </apex:form>
+    </apex:define>
+ 
+</apex:page>
