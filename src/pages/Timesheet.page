@@ -1,20 +1,56 @@
 <apex:page id="timesheet" showHeader="true" sidebar="true" standardcontroller="Timesheet__c" extensions="TimesheetController" title="Timesheet">
-    <apex:define name="body">
+
+        <apex:define name="body">
         <apex:form id="theForm">
           <apex:outputPanel style="padding:50px 50px 50px 50px" id="userDetail">
-           <apex:pageBlock title="Timesheet Detail" id="editUserDetail" rendered="{!isEdit}">
+           <apex:pageBlock title="Timesheet Detail for {!Timesheet__c.Name}" id="editTSDetail" rendered="{!isEdit}">
              <apex:pageMessages />
              <apex:pageBlockButtons id="editButtons" location="top">
                <apex:commandButton id="save" value="{!$Label.site.save}" action="{!save}" rerender="userDetail"/>
                <apex:commandButton id="cancel" value="{!$Label.site.cancel}" action="{!cancel}" rerender="userDetail" immediate="true"/>
              </apex:pageBlockButtons>
-             <apex:pageBlockSection id="editUserSection" columns="1" title="{!$Label.site.user_information}">
+             <apex:pageBlockSection id="editUserSection" columns="2" title="{!$Label.site.user_information}">
                  <apex:inputField id="editemployee" value="{!Timesheet__c.Employee__c}"/>
+                 <apex:outputField value="{!Timesheet__c.Annual_leave_entitlement__c}"/>
                  <apex:inputField id="editweek" value="{!Timesheet__c.Week_beginning__c}"/>
+                 <apex:outputField value="{!Timesheet__c.Standard_hours__c}"/>
                  <apex:inputField id="edithr" value="{!Timesheet__c.Reviewed_by_HR__c}"/>
+                 <apex:outputField value="{!Timesheet__c.Total_Hours__c}"/>
+                 <apex:outputField value="{!Timesheet__c.Time_in_lieu_worked_this_week_in_hours__c}"/>
   	         </apex:pageBlockSection>
-             <apex:pageBlockSection id="editContactSection" columns="2" title="Times">
-                 <apex:inputField id="editfirstName" value="{!Timesheet__c.Comments__c}"/> 
+             <apex:pageBlockSection id="editContactSection" columns="3" title="Times">
+                 <apex:inputField value="{!Timesheet__c.Monday_Time_In__c}"/> 
+                 <apex:inputField value="{!Timesheet__c.Monday_Time_Out__c}"/>
+                 <apex:outputField value="{!Timesheet__c.Monday_Hours_worked__c}"/>
+                 <apex:inputField value="{!Timesheet__c.Tuesday_Time_In__c}"/> 
+                 <apex:inputField value="{!Timesheet__c.Tuesday_Time_Out__c}"/> 
+                 <apex:outputField value="{!Timesheet__c.Tuesday_Hours_worked__c}"/>
+                 <apex:inputField value="{!Timesheet__c.Wednesday_Time_In__c}"/> 
+                 <apex:inputField value="{!Timesheet__c.Wednesday_Time_Out__c}"/> 
+                 <apex:outputField value="{!Timesheet__c.Wednesday_Hours_worked__c}"/>
+                 <apex:inputField value="{!Timesheet__c.Thursday_Time_In__c}"/> 
+                 <apex:inputField value="{!Timesheet__c.Thursday_Time_Out__c}"/> 
+                 <apex:outputField value="{!Timesheet__c.Thursday_Hours_worked__c}"/>
+                 <apex:inputField value="{!Timesheet__c.Friday_Time_In__c}"/> 
+                 <apex:inputField value="{!Timesheet__c.Friday_Time_Out__c}"/> 
+                 <apex:outputField value="{!Timesheet__c.Friday_Hours_worked__c}"/>
+                 <apex:inputField value="{!Timesheet__c.Saturday_Time_In__c}"/> 
+                 <apex:inputField value="{!Timesheet__c.Saturday_Time_Out__c}"/> 
+                 <apex:outputField value="{!Timesheet__c.Saturday_Hours_worked__c}"/>
+                 <apex:inputField value="{!Timesheet__c.Sunday_Time_In__c}"/> 
+                 <apex:inputField value="{!Timesheet__c.Sunday_Time_Out__c}"/> 
+                 <apex:outputField value="{!Timesheet__c.Sunday_Hours_worked__c}"/>
+                 <apex:pageBlockSectionItem />
+                 <apex:pageBlockSectionItem />
+                 <apex:outputField value="{!Timesheet__c.Total_Hours_worked__c}"/>
+			</apex:pageBlockSection>                 
+             <apex:pageBlockSection columns="2" title="Other hours">
+                 <apex:inputField value="{!Timesheet__c.Annual_leave_taken_this_week_in_hours__c}"/> 
+                 <apex:inputField value="{!Timesheet__c.Time_in_lieu_used_this_week_in_hours__c}"/> 
+                 <apex:inputField value="{!Timesheet__c.Sick_leave_taken_this_week_in_hours__c}"/> 
+                 <apex:inputField value="{!Timesheet__c.Fixed_annual_leave_this_week__c}"/> 
+                  <apex:pageBlockSectionItem />
+                 <apex:inputField id="comments" value="{!Timesheet__c.Comments__c}"/>
                </apex:pageBlockSection>
            </apex:pageBlock>         
         

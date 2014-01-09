@@ -2,7 +2,7 @@ trigger UpdateTutorOnLearningSession on Learning_Session__c (before insert)
 {
     Map<Id, Learning_Session__c> mapSessions = new Map<Id, Learning_Session__c>();
     Set<Id> whoIds = new Set<Id>();
-    ID AssessmentRecordTypeID = [select ID from RecordType where Name='Assessment session' limit 1].id;
+    ID AssessmentRecordTypeID = [select ID from RecordType where DeveloperName='Assessment_session' limit 1].id;
 
     for(Learning_Session__c lsNew : Trigger.new)
     {

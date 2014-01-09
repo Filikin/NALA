@@ -11,7 +11,7 @@ trigger ChangeOwnerOnLearnerToTutorOrLSW on Learner__c (before insert, before up
  	Contact internalContact=null;
  	try
  	{
-    	RecordType tutorType = [SELECT ID, Name FROM RecordType WHERE SobjectType='Contact' and Name='NALA Tutor or LSW'];
+    	RecordType tutorType = [SELECT ID, Name FROM RecordType WHERE SobjectType='Contact' and DeveloperName='Tutor_or_LSW'];
  		internalContact = [select ID, OwnerID from Contact where Name like 'Internal%' and RecordTypeID=:tutorType.id limit 1];
  	}
  	catch (Exception e)

@@ -52,7 +52,7 @@ public class LearningSessionsReport
 
     public static testMethod void testGetSessions ()
     {
-    	RecordType tutorType = [SELECT ID, Name FROM RecordType WHERE SobjectType='Contact' and Name='NALA Tutor or LSW'];
+    	RecordType tutorType = [SELECT ID, Name FROM RecordType WHERE SobjectType='Contact' and DeveloperName='Tutor_or_LSW'];
     	
     	Contact internalTutor = new Contact (LastName='Internal', RecordTypeID = tutorType.ID);
     	insert internalTutor;

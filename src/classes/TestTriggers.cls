@@ -1,27 +1,9 @@
 @isTest
 private class TestTriggers 
 {
-	static testMethod void testCreateTimesheet ()
-	{
-    	RecordType employeeType = [SELECT ID, Name FROM RecordType WHERE SobjectType='Contact' and Name='Internal Employee'];
-    	
-    	Contact internalemployee = new Contact (LastName='Internal', RecordTypeID = employeeType.ID);
-    	insert internalemployee;
-    	
-    	Timesheet__c ts = new Timesheet__c (Week_beginning__c = system.today());
-    	ts.Monday_Time_in__c='07:00';
-    	ts.Monday_Time_out__c = '15:30';
-    	ts.Friday_Time_in__c='07:00';
-    	ts.Friday_Time_out__c = '10:00';
-    	insert ts;
-    	
-		ts = [select Total_Hours_worked__c from Timesheet__c where ID=:ts.id];
-		system.assertEquals(11.5, ts.Total_Hours_worked__c);
-	}
-	
     static testMethod void testCreateLearningSession() 
     {
-    	RecordType tutorType = [SELECT ID, Name FROM RecordType WHERE SobjectType='Contact' and Name='NALA Tutor or LSW'];
+    	RecordType tutorType = [SELECT ID, Name FROM RecordType WHERE SobjectType='Contact' and DeveloperName='Tutor_or_LSW'];
     	
     	Contact internalTutor = new Contact (LastName='Internal', RecordTypeID = tutorType.ID);
     	insert internalTutor;

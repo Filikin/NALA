@@ -1,3 +1,4 @@
+// Gave up on this - an attempt to produce a custom page for the Time sheet, abandoned because the portal users cannot access children of contacts
 public with sharing class TimesheetController 
 {
     private final Timesheet__c ts;

@@ -13,7 +13,7 @@ public with sharing class MyProfilePageController {
 
     public MyProfilePageController() {
         user = [SELECT id, email, username, usertype, communitynickname, timezonesidkey, languagelocalekey, firstname, lastname, phone, title,
-                street, city, country, postalcode, state, localesidkey, mobilephone, extension, fax, contact.email
+                street, city, country, postalcode, state, localesidkey, mobilephone, extension, fax, contact.email, Annual_leave_this_year__c, Annual_leave_remaining_this_year__c
                 FROM User
                 WHERE id = :UserInfo.getUserId()];
         // guest users should never be able to access this page
