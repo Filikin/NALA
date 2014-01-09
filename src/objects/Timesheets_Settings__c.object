@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Protected</customSettingsVisibility>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Hours_per_short_day__c</fullName>
+        <defaultValue>7</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Hours for Friday</inlineHelpText>
+        <label>Hours per short day</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hours_per_standard_day__c</fullName>
+        <defaultValue>7.5</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Hours for Monday to Thursday</inlineHelpText>
+        <label>Hours per standard day</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Standard_hours_per_week__c</fullName>
+        <defaultValue>37</defaultValue>
+        <externalId>false</externalId>
+        <label>Standard hours per week</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Timesheets Settings</label>
+</CustomObject>

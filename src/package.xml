@@ -17,6 +17,21 @@
         <name>ApexTrigger</name>
     </types>
     <types>
+        <members>Contact</members>
+        <members>Timesheet__c</members>
+        <members>Timesheets_Settings__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Timesheet__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Contact-Employee</members>
+        <members>Timesheet__c-Timesheet Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
         <members>*</members>
         <name>StaticResource</name>
     </types>

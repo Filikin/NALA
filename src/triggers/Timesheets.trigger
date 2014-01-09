@@ -26,6 +26,8 @@ trigger Timesheets on Timesheet__c (before insert, before update, after insert, 
     
     if (trigger.isAfter)
     {
+    	Timesheets_Settings__c ts_settings = Timesheets_Settings__c.getOrgDefaults();
+    	Decimal hoursPerWeek = ts_settings.Standard_hours_per_week__c != null ? ts_settings.Standard_hours_per_week__c : 37;
 	    List<Contact> employees = [select ID, Annual_leave_used_this_year__c from Contact where ID in :employeesSet];
 	    
 	    // get all the relevant time sheets and recalculate the annual leave used
@@ -41,7 +43,7 @@ trigger Timesheets on Timesheet__c (before insert, before update, after insert, 
 				if (oneTS.Employee__c == oneEmployee.id) oneEmployee.Annual_leave_used_this_year__c += oneTS.Annual_leave_taken_this_week_in_hours__c; 
 			}
 			system.debug ('oneEmployee.Annual_leave_used_this_year__c: ' + oneEmployee.Annual_leave_used_this_year__c);
-			oneEmployee.Annual_leave_used_this_year__c /= (37/5);
+			oneEmployee.Annual_leave_used_this_year__c /= (hoursPerWeek/5);
 		}    
 	    update employees;
     }
